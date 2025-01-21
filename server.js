@@ -1,12 +1,12 @@
 require('dotenv').config();
 
 const app = require("./app");
-const sequelize = require("./db");
+const db = require('./models');
 const port = process.env.PORT || 3000;
 
 const startServer = async () => {
   try {
-    await sequelize.sync();
+    await db.sequelize.sync();
     console.log("Database synced successfully");
     app.listen(port, () => {
       console.log(`Server is running on http://localhost:${port}`);
